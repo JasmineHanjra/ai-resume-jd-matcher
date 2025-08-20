@@ -191,8 +191,6 @@ streamlit run app_simple.py
 GitHub: [https://github.com/](https://github.com/)<JasmineHanjra>
 LinkedIn: [https://www.linkedin.com/in/jasminehanjra](https://www.linkedin.com/in/jasminehanjra)
 
-> If this helped you, a star ⭐ on the repo is appreciated!
 
-````
 
 
