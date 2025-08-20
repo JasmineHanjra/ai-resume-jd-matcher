@@ -1,4 +1,18 @@
-# scripts/fix_categories.py
+# ─────────────────────────────────────────────────────────────────────────────
+# Project: AI Resume ↔ JD Matcher
+# File: scripts/fix_categories.py
+# Author: Jasmine Kaur Hanjra
+# Created: Aug 2025
+# Purpose:
+#   Heuristically relabel jd_category from jd_title/jd_role/jd_text using regex rules.
+#   Overwrites data/jobs_clean.csv in-place.
+# Caveats:
+#   - Rule-based; imperfect. Prefer ML classifier if you later curate labels.
+# Future work:
+#   - Collect labeled titles → train a lightweight title→category classifier.
+#   - Track coverage/precision per rule.
+# ─────────────────────────────────────────────────────────────────────────────
+
 import re, pathlib, pandas as pd
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]

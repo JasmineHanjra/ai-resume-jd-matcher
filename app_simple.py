@@ -1,5 +1,25 @@
-# app_simple.py
-# Upload a resume, filter job descriptions from your dataset, and see TOP matches.
+# ─────────────────────────────────────────────────────────────────────────────
+# Project: AI Resume ↔ JD Matcher (Dataset-Backed, Streamlit)
+# File: app_simple.py
+# Author: Jasmine Kaur Hanjra  •  github.com/<JasmineHanjra>
+# Created: Aug 2025
+# Purpose:
+#   Streamlit UI to upload a resume (PDF/DOCX/TXT), filter JDs by category/keyword,
+#   score matches using a trained classifier (TF-IDF + SBERT features), and coach
+#   the user with prioritized missing skills, suggested bullets, and a “what-if”
+#   score simulator.
+# Inputs:
+#   - data/jd_index.csv, data/matcher_model.joblib, data/threshold.json
+# Depends on:
+#   - scripts/featurize_shared.py (feature builder & cleaners)
+# Notes:
+#   - SBERT loads on CPU; app gracefully degrades to TF-IDF if SBERT is unavailable.
+# Future work (ideas):
+#   - Add calibration plot & reliability score per prediction.
+#   - Persist user sessions; export a tailored resume draft.
+#   - Add anonymization for emails/links before vectorization.
+# ─────────────────────────────────────────────────────────────────────────────
+
 # Uses a trained model + TF-IDF & SBERT similarity features (via scripts/featurize_shared.py).
 import sys, pathlib
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -17,7 +37,6 @@ import streamlit as st
 from joblib import load
 
 # ---- Our shared featurizer (clean_text + build_features: tfidf, sbert, overlaps) ----
-# Make sure scripts/featurize_shared.py exists (I provided it earlier).
 from featurize_shared import build_features, clean_text
 
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -65,7 +84,7 @@ def highlight_terms(text: str, terms: list[str]) -> str:
         s = re.sub(rf"(?i)(?<!\w)({re.escape(t)})", r"<mark>\1</mark>", s)
     return s
 
-# --- bullet templates for suggestions (edit/extend freely) ---
+# --- bullet templates for suggestions ---
 TEMPLATES = {
     # IT / Data
     "python":      "Developed data pipelines in Python with logging and unit tests.",
@@ -193,7 +212,7 @@ def score_resume_against_jds(resume_text: str, jd_df: pd.DataFrame, top_k: int =
         overlap   = meta["overlap"]
 
         # HARD-NEGATIVE GATE: if all signals are tiny, cap probability
-        if sim_sbert >= 0:  # SBERT available
+        if sim_sbert >= 0:  
             if sim_tfidf < 0.03 and sim_sbert < 0.30 and overlap < 0.05:
                 proba = min(proba, 0.20)
         else:               # fallback when SBERT isn't installed

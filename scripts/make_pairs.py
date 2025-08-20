@@ -1,4 +1,17 @@
-# scripts/make_pairs.py
+# ─────────────────────────────────────────────────────────────────────────────
+# Project: AI Resume ↔ JD Matcher
+# File: scripts/make_pairs.py
+# Author: Jasmine Kaur Hanjra
+# Created: Aug 2025
+# Purpose:
+#   Construct balanced positive/negative resume↔JD pairs for training.
+# Output:
+#   data/pairs.csv with columns [resume_text, jd_text, label, ...]
+# Future work:
+#   - Hard-negative mining (cross-category near-misses).
+#   - Save split identifiers to guarantee reproducible CV splits.
+# ─────────────────────────────────────────────────────────────────────────────
+
 import pathlib, re
 import numpy as np
 import pandas as pd

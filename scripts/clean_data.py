@@ -1,4 +1,20 @@
-# scripts/clean_data.py
+# ─────────────────────────────────────────────────────────────────────────────
+# Project: AI Resume ↔ JD Matcher
+# File: scripts/clean_data.py
+# Author: Jasmine Kaur Hanjra
+# Created: Aug 2025
+# Purpose:
+#   Normalize/clean raw datasets and write:
+#     - data/resumes_clean.csv
+#     - data/jobs_clean.csv (chunked read; preserves/infer jd_category)
+# Assumptions:
+#   - Resume.csv has columns: Resume_str, Category (ID optional)
+#   - job_descriptions.csv (or jobs_small.csv) has Job Description (+ optional title/role)
+# Future work:
+#   - Add robust encoding fallback and bad-row quarantine.
+#   - Detect/merge near-duplicate JDs.
+# ─────────────────────────────────────────────────────────────────────────────
+
 import pandas as pd, pathlib, re, os
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -13,7 +29,7 @@ def clean_text(s: str) -> str:
     return s
 
 # ---------- resumes: Resume.csv -> resumes_clean.csv ----------
-resumes_path = DATA / "Resume.csv"  # adjust if your file is named differently
+resumes_path = DATA / "Resume.csv"  
 resumes = pd.read_csv(resumes_path, encoding="utf-8", engine="python")
 
 resumes.columns = [c.strip() for c in resumes.columns]

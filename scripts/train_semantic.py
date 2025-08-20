@@ -1,4 +1,20 @@
-# scripts/train_semantic.py
+# ─────────────────────────────────────────────────────────────────────────────
+# Project: AI Resume ↔ JD Matcher
+# File: scripts/train_semantic.py
+# Author: Jasmine Kaur Hanjra
+# Created: Aug 2025
+# Purpose:
+#   Train logistic classifier on features (TF-IDF + SBERT + overlap/length).
+#   Evaluate with GroupKFold by resume and by JD to prevent leakage.
+# Artifacts:
+#   - data/matcher_model.joblib
+#   - data/threshold.json
+#   - data/model_metrics.json
+# Future work:
+#   - Add calibration curve & temperature scaling if needed.
+#   - Save confusion matrices and per-category metrics.
+# ─────────────────────────────────────────────────────────────────────────────
+
 import json, pathlib, numpy as np, pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler

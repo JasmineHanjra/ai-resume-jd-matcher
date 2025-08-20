@@ -1,4 +1,19 @@
-# scripts/build_jd_index.py
+# ─────────────────────────────────────────────────────────────────────────────
+# Project: AI Resume ↔ JD Matcher
+# File: scripts/build_jd_index.py
+# Author: Jasmine Kaur Hanjra
+# Created: Aug 2025
+# Purpose:
+#   Build a compact, balanced JD index for the app:
+#     - per-category sampling with relaxed length fallbacks
+#     - writes data/jd_index.csv with [jd_id, jd_text, jd_title, jd_role, jd_category]
+# Tunables:
+#   PER_CATEGORY, MIN_LEN, FALLBACK_MIN
+# Future work:
+#   - Expose tunables via CLI args; log per-category retention.
+#   - Add dedupe via MinHash/LSH.
+# ─────────────────────────────────────────────────────────────────────────────
+
 import pathlib, re, pandas as pd
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
