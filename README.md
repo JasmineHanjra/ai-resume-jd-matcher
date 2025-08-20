@@ -1,5 +1,4 @@
 
-````markdown
 # AI Resume ↔ JD Matcher (Dataset-Backed, Streamlit)
 
 > Upload a resume (PDF/DOCX/TXT), pick a JD category, and get a **match probability**, **missing skills/keywords**, **copy-paste bullet suggestions**, and a **what-if** score lift if you add them.
@@ -195,4 +194,5 @@ LinkedIn: [https://www.linkedin.com/in/jasminehanjra](https://www.linkedin.com/i
 > If this helped you, a star ⭐ on the repo is appreciated!
 
 ````
+
 
