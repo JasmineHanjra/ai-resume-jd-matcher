@@ -1,3 +1,4 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 # AI Resume ↔ JD Matcher (Dataset-Backed, Streamlit)
 
@@ -190,6 +191,7 @@ streamlit run app_simple.py
 **Jasmine Kaur Hanjra**
 GitHub: [https://github.com/](https://github.com/)<JasmineHanjra>
 LinkedIn: [https://www.linkedin.com/in/jasminehanjra](https://www.linkedin.com/in/jasminehanjra)
+
 
 
 
