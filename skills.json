@@ -1,0 +1,10 @@
+[
+  "python", "java", "c++", "c", "javascript", "typescript",
+  "pandas", "numpy", "scikit-learn", "tensorflow", "pytorch",
+  "matplotlib", "sql", "nosql", "mongodb", "postgresql", "mysql",
+  "airflow", "spark", "hadoop", "aws", "gcp", "azure",
+  "docker", "kubernetes", "linux", "git", "ci/cd", "bash",
+  "nlp", "computer vision", "mlops", "etl", "data pipeline",
+  "node.js", "react", "django", "flask", "fastapi",
+  "tableau", "power bi"
+]

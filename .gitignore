@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.streamlit/
+
+data/*
+!data/jd_index.csv
+!data/matcher_model.joblib
+!data/threshold.json
+!data/model_metrics.json
+!data/skills.json
